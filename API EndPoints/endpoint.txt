@@ -1,0 +1,22 @@
+1. If you want to test you RestFul Web Service use:
+http://localhost:8080/spring_web_app/rest/test
+
+
+2.URI to Get an Employee data:
+http://localhost:8080/spring_web_app/rest/emp/{id}
+
+
+3. URI to Get all the records of an employee :
+http://localhost:8080/spring_web_app/rest/emps
+
+
+4. URI to create records of an employee :
+http://localhost:8080/spring_web_app/rest/emp/create
+
+5. URI to create 10 records of employee :
+http://localhost:8080/spring_web_app/rest/emp/creates
+
+
+6. URI to delete a particular employee :
+http://localhost:8080/spring_web_app/rest/emp/delete/{id}
+

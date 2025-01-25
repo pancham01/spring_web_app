@@ -22,14 +22,12 @@ import spring.model.Employee;
 @Controller
 public class EmployeeController {
 
-	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
 	// Map to store employees
 	Map<Integer, Employee> empData = new HashMap<Integer, Employee>();
 
 	@RequestMapping(value = EmpRestURIConstants.TEST, method = RequestMethod.GET)
 	public @ResponseBody Employee getDummyEmployee() {
-		logger.info("Start getDummyEmployee");
 		Employee emp = new Employee();
 		emp.setId(1);
 		emp.setName("Piyush");
@@ -41,14 +39,12 @@ public class EmployeeController {
 
 	@RequestMapping(value = EmpRestURIConstants.GET_EMP, method = RequestMethod.GET)
 	public @ResponseBody Employee getEmployee(@PathVariable("id") int empId) {
-		logger.info("Start getEmployee. ID=" + empId);
 
 		return empData.get(empId);
 	}
 
 	@RequestMapping(value = EmpRestURIConstants.GET_ALL_EMP, method = RequestMethod.GET)
 	public @ResponseBody Map getAllEmployees() {
-		logger.info("Start getAllEmployees.");
 		List<Employee> emps = new ArrayList<Employee>();
 		Set<Integer> empIdKeys = empData.keySet();
 		for (Integer i : empIdKeys) {
@@ -58,14 +54,12 @@ public class EmployeeController {
 	}
 	@RequestMapping(value = EmpRestURIConstants.CREATE_EMP, method = RequestMethod.POST)
 	public @ResponseBody Employee createAnEmployee(@RequestBody Employee emp) {
-		logger.info("Start createEmployee.");
 		emp.setCreatedDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
 		empData.put(emp.getId(), emp);
 		return emp;
 	}
 	@RequestMapping(value = EmpRestURIConstants.CREATE_EMPS, method = RequestMethod.POST)
 	public @ResponseBody String createEmployee() {
-		logger.info("Start createEmployee.");
 		System.out.println("DONEEEEEEEEEEE");
 		for (int i = 1; i <= 10; i++) {
 			Employee emp = new Employee();
@@ -81,7 +75,6 @@ public class EmployeeController {
 
 	@RequestMapping(value = EmpRestURIConstants.DELETE_EMP, method = RequestMethod.DELETE)
 	public @ResponseBody Employee deleteEmployee(@PathVariable("id") int empId) {
-		logger.info("Start deleteEmployee.");
 		Employee emp = empData.get(empId);
 		empData.remove(empId);
 		return emp;
