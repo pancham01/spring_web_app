@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,7 +72,8 @@ public class EmployeeController {
 		return "10 employees records inserted!!!!!!";
 	}
 
-	@RequestMapping(value = EmpRestURIConstants.DELETE_EMP, method = RequestMethod.DELETE)
+//	@RequestMapping(value = EmpRestURIConstants.DELETE_EMP, method = RequestMethod.DELETE)
+	@DeleteMapping(value = EmpRestURIConstants.DELETE_EMP)
 	public @ResponseBody Employee deleteEmployee(@PathVariable("id") int empId) {
 		Employee emp = empData.get(empId);
 		empData.remove(empId);
