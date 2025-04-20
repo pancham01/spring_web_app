@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ public class EmployeeController {
 	// Map to store employees
 	Map<Integer, Employee> empData = new HashMap<Integer, Employee>();
 
-	@RequestMapping(value = EmpRestURIConstants.TEST, method = RequestMethod.GET)
+	@GetMapping(value = EmpRestURIConstants.TEST)
 	public @ResponseBody Employee getDummyEmployee() {
 		Employee emp = new Employee();
 		emp.setId(1);
