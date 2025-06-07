@@ -20,7 +20,7 @@ public class HelloWorldController {
 //	 @RequestMapping(method = RequestMethod.GET)
 	@GetMapping(path = { "/getmapping", "/fetchMapping" })
 	public String get(HttpServletRequest req, HttpServletResponse res) {
-		
+
 		System.out.println("Controller- fetchMapping");
 		return "admin";
 	}
@@ -36,34 +36,26 @@ public class HelloWorldController {
 	// hello/getCustomer/1234/details
 	@ResponseBody
 	@GetMapping(path = { "/getCustomer/{customerId}/details" })
-	public String getPathVariable(@PathVariable String customerId) {
+	public String getPathVariable(@PathVariable(name = "customerId") String customerId) {
 
 		System.out.println("Controller-  params=customerId : " + customerId);
 		return "Controller-  params=customerId : " + customerId;
 	}
 
-	
-	
-	
 	@RequestMapping("/setCookie")
 	public String setCookie(HttpServletResponse response) {
-	    Cookie cookie = new Cookie("myCookie", "DangerValue");
-	    cookie.setMaxAge(10); // Cookie will expire in 1 hour
-	    response.addCookie(cookie);
-	    return "redirect:/electronics/second";
+		Cookie cookie = new Cookie("myCookie", "DangerValue");
+		cookie.setMaxAge(10); // Cookie will expire in 1 hour
+		response.addCookie(cookie);
+		return "redirect:/electronics/second";
 	}
-	
-	
-	
-	
-	
+
 	@RequestMapping("/second")
-    public String secondPage(@CookieValue(value = "myCookie", defaultValue = "defaultCookieValue1") String myCookieValue, Model model) {
-        // Use myCookieValue in your controller logic
-        model.addAttribute("cookiesValue", myCookieValue);
-        return "second";
-    }
-	
-	
-	
+	public String secondPage(
+			@CookieValue(value = "myCookie", defaultValue = "defaultCookieValue1") String myCookieValue, Model model) {
+		// Use myCookieValue in your controller logic
+		model.addAttribute("cookiesValue", myCookieValue);
+		return "second";
+	}
+
 }
