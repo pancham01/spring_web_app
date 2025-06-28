@@ -11,6 +11,7 @@ import jakarta.servlet.ServletRegistration;
 public class WebServletConfiguration implements WebApplicationInitializer {
 	@Override
 	public void onStartup(ServletContext ctx) throws ServletException {
+		System.out.println("WebServletConfiguration.onStartup()");
 		AnnotationConfigWebApplicationContext annWebConfig = new AnnotationConfigWebApplicationContext();
 		annWebConfig.register(SpringConfig.class);
 		annWebConfig.setServletContext(ctx);
