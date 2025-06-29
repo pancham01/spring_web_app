@@ -22,7 +22,6 @@ import spring.model.Employee;
 @Controller
 public class EmployeeController {
 
-
 	// Map to store employees
 	Map<Integer, Employee> empData = new HashMap<Integer, Employee>();
 
@@ -45,11 +44,7 @@ public class EmployeeController {
 
 	@RequestMapping(value = EmpRestURIConstants.GET_ALL_EMP, method = RequestMethod.GET)
 	public @ResponseBody Map getAllEmployees() {
-		List<Employee> emps = new ArrayList<Employee>();
-		Set<Integer> empIdKeys = empData.keySet();
-		for (Integer i : empIdKeys) {
-			emps.add(empData.get(i));
-		}
+		System.out.println("EmployeeController.getAllEmployees()");
 		return empData;
 	}
 	@RequestMapping(value = EmpRestURIConstants.CREATE_EMP, method = RequestMethod.POST)
